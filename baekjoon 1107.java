@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/98951034/153718638-f174ffc0-98ae-42b4-9ec1-21126ae5fc64.png)
+
 package baekjoon;
 
 import java.io.BufferedReader;
@@ -12,28 +14,28 @@ public class Main24 {
 		int n = Integer.parseInt(br.readLine());
 		int buttonList = Integer.parseInt(br.readLine());
 
-		ArrayList<Character> list = new ArrayList<Character>();		//°íÀå³­ ¹öÆ° ¹è¿­
+		ArrayList<Character> list = new ArrayList<Character>();		//ê³ ì¥ë‚œ ë²„íŠ¼ ë°°ì—´
 		
-		if(buttonList != 0) {										//°íÀå³­ ¹öÆ°ÀÌ ¾øÀ¸¸é ÀÔ·Â¹ŞÁö ¾ÊÀ½
+		if(buttonList != 0) {										//ê³ ì¥ë‚œ ë²„íŠ¼ì´ ì—†ìœ¼ë©´ ì…ë ¥ë°›ì§€ ì•ŠìŒ
 			
 		StringTokenizer st = new StringTokenizer(br.readLine()," ");
 		
 			for(int i = 0;i < buttonList;i++) {
-				list.add(st.nextToken().charAt(0));		//StringÀ» CharacterÀ¸·Î º¯È¯
+				list.add(st.nextToken().charAt(0));		//Stringì„ Characterìœ¼ë¡œ ë³€í™˜
 			}
 		}
 		
-		int buttonMove = Math.abs(n-100);			//Ã¤³Î 100 ¿¡¼­ ºÎÅÍ '+','-'·Î¸¸ ¿òÁ÷ÀÎ °ª
+		int buttonMove = Math.abs(n-100);			//ì±„ë„ 100 ì—ì„œ ë¶€í„° '+','-'ë¡œë§Œ ì›€ì§ì¸ ê°’
 		
-		int min = 9999999;							//Ã¤³ÎÀÇ ÃÖ´ë°ª : °¡Àå °¡±î¿î Ã¤³ÎÀ» Ã£±âÀ§ÇÑ °ª
+		int min = 9999999;							//ì±„ë„ì˜ ìµœëŒ€ê°’ : ê°€ì¥ ê°€ê¹Œìš´ ì±„ë„ì„ ì°¾ê¸°ìœ„í•œ ê°’
 		int count = 0;
 		
-		for(int i = 0;i < 1000000;i++) {			//¸ğµç Ã¤³Î ¿ÏÀüÅ½»ö
-			String s = String.valueOf(i);			//i°ªÀ» StringÀ¸·Î ÀüÈ¯
-			boolean flag = true;					//¿ÀÀÛµ¿ ¹öÆ°À» Ã¼Å©ÇÏ´Â boolean
+		for(int i = 0;i < 1000000;i++) {			//ëª¨ë“  ì±„ë„ ì™„ì „íƒìƒ‰
+			String s = String.valueOf(i);			//iê°’ì„ Stringìœ¼ë¡œ ì „í™˜
+			boolean flag = true;					//ì˜¤ì‘ë™ ë²„íŠ¼ì„ ì²´í¬í•˜ëŠ” boolean
 			
 			for(int k = 0;k < s.length();k++) {
-				if(list.contains(s.charAt(k))) {	//¿ÀÀÛµ¿ ¹öÆ°¼ıÀÚ°¡ Æ÷ÇÔµÇ¾îÀÖÀ¸¸é continue
+				if(list.contains(s.charAt(k))) {	//ì˜¤ì‘ë™ ë²„íŠ¼ìˆ«ìê°€ í¬í•¨ë˜ì–´ìˆìœ¼ë©´ continue
 					flag = false;
 					break;
 				}
