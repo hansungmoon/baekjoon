@@ -8,41 +8,37 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main26 {
-	static int arr[][];					// ÀÎÁ¢Çà·Ä ¹è¿­
-	static boolean visit[];				// ¹æ¹® ¿©ºÎ È®ÀÎÀ» À§ÇÑ boolean¹è¿­
+	static int arr[][];					// ì¸ì ‘í–‰ë ¬ ë°°ì—´
+	static boolean visit[];				// ë°©ë¬¸ ì—¬ë¶€ í™•ì¸ì„ ìœ„í•œ booleanë°°ì—´
 	
-	// Àç±ÍÇÔ¼ö¸¦ ÀÌ¿ëÇÑ dfs
+	// ì¬ê·€í•¨ìˆ˜ë¥¼ ì´ìš©í•œ dfs
 	static void dfs(int V) {
-		visit[V] = true;				// Á¤Á¡ ¹æ¹® true
+		visit[V] = true;				// ì •ì  ë°©ë¬¸ true
 		System.out.print(V + " ");		
 		
-		if(V == arr.length) {			// ¹è¿­À» ´Ù Å½»öÇÏ¸é return
-			return;
-		}
-		
 		for(int i = 1;i < arr.length;i++) {
-			if(arr[V][i] == 1 && visit[i] == false) {	// Á¤Á¡ VÀÇ °£¼±ÀÌ ÀÖ°í ¹æ¹®ÇÑÀûÀÌ ¾øÀ¸¸é 
-				dfs(i);									// Àç±Í
+			if(arr[V][i] == 1 && visit[i] == false) {	// ì •ì  Vì˜ ê°„ì„ ì´ ìˆê³  ë°©ë¬¸í•œì ì´ ì—†ìœ¼ë©´ 
+				dfs(i);									// ì¬ê·€
 			}
 		}
 	}
 	
-	// bfs Queue¸¦ »ç¿ë
+	// bfs Queueë¥¼ ì‚¬ìš©
 	static void bfs(int V) {
 		Queue<Integer> queue = new LinkedList<Integer>();
 		queue.add(V);
 		
-		visit[V] = true;				// Á¤Á¡ ¹æ¹® true
+		visit[V] = true;				// ì •ì  ë°©ë¬¸ true
 		System.out.print(V + " ");
 		
-		while(!queue.isEmpty()) {		// Queue°¡ ´Ù ºñ¿öÁú¶§ ±îÁö ¹İº¹
+		while(!queue.isEmpty()) {		// Queueê°€ ë‹¤ ë¹„ì›Œì§ˆë•Œ ê¹Œì§€ ë°˜ë³µ
 			
 			int qNum = queue.peek();	
-			queue.poll();				// °£¼± Å½»öÈÄ  Queue¿¡¼­ ºñ¿ò
+			queue.poll();				// ê°„ì„  íƒìƒ‰í›„  Queueì—ì„œ ë¹„ì›€
 			
 			for(int i = 1;i < arr.length;i++) {
-				if(arr[qNum][i] == 1 && visit[i] == false) {	// Á¤Á¡ VÀÇ °£¼±ÀÌ ÀÖ°í ¹æ¹®ÇÑÀûÀÌ ¾øÀ¸¸é 
-					queue.add(i);								// ¹æ¹®ÇÑ Á¤Á¡ Queue¿¡ Ãß°¡
+				if(arr[qNum][i] == 1 && visit[i] == false) {	// ì •ì  Vì˜ ê°„ì„ ì´ ìˆê³  ë°©ë¬¸í•œì ì´ ì—†ìœ¼ë©´ 
+					queue.add(i);								// ë°©ë¬¸í•œ ì •ì  Queueì— ì¶”ê°€
 					visit[i] = true;
 					System.out.print(i + " ");
 				}
@@ -58,18 +54,18 @@ public class Main26 {
 		int M = Integer.parseInt(st.nextToken());
 		int V = Integer.parseInt(st.nextToken());
 		
-		arr = new int[N+1][N+1];				// ¹è¿­ 0 ¹øÀº »ç¿ë ¾ÈÇÏ±â ¶§¹®¿¡ Á¤Á¡ °³¼ö +1
+		arr = new int[N+1][N+1];				// ë°°ì—´ 0 ë²ˆì€ ì‚¬ìš© ì•ˆí•˜ê¸° ë•Œë¬¸ì— ì •ì  ê°œìˆ˜ +1
 		
 		for(int i = 0;i < M;i++) {
 			st = new StringTokenizer(br.readLine()," ");
 			int n1 = Integer.parseInt(st.nextToken());
 			int n2 = Integer.parseInt(st.nextToken());
 			
-			arr[n1][n2] = 1;					// ÀÎÁ¢Çà·Ä ÀÔ·Â
+			arr[n1][n2] = 1;					// ì¸ì ‘í–‰ë ¬ ì…ë ¥
 			arr[n2][n1] = 1;
 		}
 		
-		visit = new boolean[N+1];				// ¹æ¹®¿©ºÎ ¹è¿­ ¼±¾ğ ¹è¿­ 0¹øÀº ¸¶Âù°¡Áö·Î »ç¿ë ¾ÈÇÔ
+		visit = new boolean[N+1];				// ë°©ë¬¸ì—¬ë¶€ ë°°ì—´ ì„ ì–¸ ë°°ì—´ 0ë²ˆì€ ë§ˆì°¬ê°€ì§€ë¡œ ì‚¬ìš© ì•ˆí•¨
 		dfs(V);
 		
 		System.out.println();
