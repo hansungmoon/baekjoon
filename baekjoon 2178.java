@@ -12,33 +12,33 @@ public class Main28 {
 	static int N;
 	static int M;
 	static boolean visited[][];
-	static int[] wayX = {-1, 1, 0, 0};				//ÁÂ, ¿ì ¹æÇâ Å½»öÀ» À§ÇÑ ¹è¿­
-	static int[] wayY = {0, 0, -1, 1};				//»ó, ÇÏ ¹æÇâ Å½»öÀ» À§ÇÑ ¹è¿­
+	static int[] wayX = {-1, 1, 0, 0};				//ìƒ, í•˜ ë°©í–¥ íƒìƒ‰ì„ ìœ„í•œ ë°°ì—´
+	static int[] wayY = {0, 0, -1, 1};				//ì¢Œ, ìš° ë°©í–¥ íƒìƒ‰ì„ ìœ„í•œ ë°°ì—´
 	
 	static void bfs(int x, int y) {
 		Queue<int[]> que = new LinkedList<int[]>();
-		que.add(new int[] {x,y});					//½ÃÀÛÁ¡À» queue¿¡ ³Ö´Â´Ù
+		que.add(new int[] {x,y});					//ì‹œì‘ì ì„ queueì— ë„£ëŠ”ë‹¤
 		
-		while(!que.isEmpty()) {						//queue°¡ ´Ù ºñ¿öÁú ¶§ ±îÁö ¹İº¹
-			int[] now = que.poll();					//queue¿¡ Ã¹¹øÂ°¸¦ ºñ¿ì°í now¹è¿­¿¡ ³Ö´Â´Ù
+		while(!que.isEmpty()) {						//queueê°€ ë‹¤ ë¹„ì›Œì§ˆ ë•Œ ê¹Œì§€ ë°˜ë³µ
+			int[] now = que.poll();					//queueì— ì²«ë²ˆì§¸ë¥¼ ë¹„ìš°ê³  nowë°°ì—´ì— ë„£ëŠ”ë‹¤
 
-			x = now[0];								//Çö À§Ä¡ ÁÂÇ¥ x, y
+			x = now[0];								//í˜„ ìœ„ì¹˜ ì¢Œí‘œ x, y
 			y = now[1];
 			
-			for(int i = 0;i < 4;i++) {				// ÁÂ,¿ì,»ó,ÇÏ ¹æÇâ È®ÀÎÇÏ´Â ¹İº¹
+			for(int i = 0;i < 4;i++) {				// ì¢Œ,ìš°,ìƒ,í•˜ ë°©í–¥ í™•ì¸í•˜ëŠ” ë°˜ë³µ
 				int nextX = x + wayX[i];
 				int nextY = y + wayY[i];
 				
-				if(nextX < 0 || nextY < 0 || nextX >=N || nextY >= M) {		//ÁÂÇ¥°ªÀÌ À½¼öÀÌ°Å³ª µµÂøÁÂÇ¥º¸´Ù Å©¸é
+				if(nextX < 0 || nextY < 0 || nextX >=N || nextY >= M) {		//ì¢Œí‘œê°’ì´ ìŒìˆ˜ì´ê±°ë‚˜ ë„ì°©ì¢Œí‘œë³´ë‹¤ í¬ë©´
 					continue;												
 				}
-				if(arr[nextX][nextY] == 0 || visited[nextX][nextY] == true) {	//´ÙÀ½ ¹æÇâ ÁÂÇ¥°¡ 0ÀÌ°Å³ª ¹æ¹®ÇÑ °÷ÀÌ¸é
+				if(arr[nextX][nextY] == 0 || visited[nextX][nextY] == true) {	//ë‹¤ìŒ ë°©í–¥ ì¢Œí‘œê°€ 0ì´ê±°ë‚˜ ë°©ë¬¸í•œ ê³³ì´ë©´
 					continue;
 				}
 				
-				que.add(new int[] {nextX, nextY});						//queue¿¡ ´ÙÀ½ ÁÂÇ¥°ªÀ» ³Ö´Â´Ù
-				visited[nextX][nextY] = true;							//´ÙÀ½ ÁÂÇ¥°ª ¹æ¹® Ã³¸®
-				arr[nextX][nextY] = arr[x][y] + 1;						//´ÙÀ½ ÁÂÇ¥°ªÀ» Àü ÁÂÇ¥°ª +1
+				que.add(new int[] {nextX, nextY});						//queueì— ë‹¤ìŒ ì¢Œí‘œê°’ì„ ë„£ëŠ”ë‹¤
+				visited[nextX][nextY] = true;							//ë‹¤ìŒ ì¢Œí‘œê°’ ë°©ë¬¸ ì²˜ë¦¬
+				arr[nextX][nextY] = arr[x][y] + 1;						//ë‹¤ìŒ ì¢Œí‘œê°’ì„ ì „ ì¢Œí‘œê°’ +1
 			}
 		}
 	}
@@ -49,22 +49,22 @@ public class Main28 {
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		arr = new int[N][M];						//ÀÎÁ¢ Çà·Ä ¹æ½ÄÀ¸·Î 2Â÷¿ø ¹è¿­
+		arr = new int[N][M];						//ì¸ì ‘ í–‰ë ¬ ë°©ì‹ìœ¼ë¡œ 2ì°¨ì› ë°°ì—´
 		
 		for(int i = 0;i < N;i++) {
 			String s = br.readLine();			
 			
 			for(int j = 0;j < M;j++) {
-				arr[i][j] = s.charAt(j) - '0';		//charÀ» int·Î º¯È¯ÇØ¼­ ¹è¿­¿¡ ³Ö´Â´Ù
+				arr[i][j] = s.charAt(j) - '0';		//charì„ intë¡œ ë³€í™˜í•´ì„œ ë°°ì—´ì— ë„£ëŠ”ë‹¤
 			}
 		}
 		
-		visited = new boolean[N][M];				//¹æ¹®¿©ºÎ È®ÀÎÀ» À§ÇÔ 2Â÷¿ø boolean¹è¿­ 
+		visited = new boolean[N][M];				//ë°©ë¬¸ì—¬ë¶€ í™•ì¸ì„ ìœ„í•¨ 2ì°¨ì› booleanë°°ì—´ 
 		visited[0][0] = true;
 		
 		bfs(0,0);
 		
-		System.out.println(arr[N-1][M-1]);			//µµÂøÁöÁ¡ Ãâ·Â
+		System.out.println(arr[N-1][M-1]);			//ë„ì°©ì§€ì  ì¶œë ¥
 		
 	}
 }
