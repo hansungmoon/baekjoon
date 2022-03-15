@@ -1,1 +1,1 @@
-![image-20220316004606135](../images/baekjoon 11724 연결요소의 개수(bfs)/image-20220316004606135.png)
+![image](https://user-images.githubusercontent.com/98951034/158418164-9d5160ae-9064-433c-967a-139f734e639c.png)
